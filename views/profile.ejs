@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+    <title>21 Savage Fan Site</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span><i class="fa fa-list" aria-hidden="true"></i></span> My WatchList</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well hidden">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <span id="userName"><%= user._id %></span><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                    <% } else { %>
+                      <a href="/connect/local" class="btn btn-default">Connect Local</a>
+      
+                    <% } %>
+            </div>
+            <div>
+              <h3>Favorite Shows</h3>  
+              <ul class="favorites"> 
+              
+                <% for(let i=0; i<shows.length; i++) {%>
+                  <% if (user.local.favorites.indexOf(shows[i]._id)!== -1) { %>
+                
+                  <li class="birthdays">
+                    <span class="hidden"><%= shows[i].genre %></span>
+                    <span><%= shows[i].title %></span>
+                    <span class="hidden"><%= shows[i]._id %></span>
+                    <span class="hidden"><%= shows[i].favorite %></span>
+                    <% if (user.local.favorites.indexOf(shows[i]._id) === -1) { %>
+                      <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                      <%  }%> 
+                    <span><i class="fa fa-minus" aria-hidden="true"></i></span>
+                  </li>
+                  <%  }%>  
+                <% } %>
+                </ul>
+            </div>  
+        </div>
+        <div class="col-sm-6">
+          <h2>Add a Show</h2>
+        <% if (user.local.email) { %>
+          <form action="/create" method="POST">
+            <select name="genre">
+              <option value="action">Action</option>
+              <option value="scifi">Sci-Fi</option>
+              <option value="drama">Drama</option>
+              <option value="comedy">Comedy</option>
+              <option value="thriller">Thriller</option>
+              <option value="romance">Romance</option>
+            </select>
+            <input type="text" placeholder="Name of TV Show" name="title">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+</div>
+<div class="tv">
+  <div>
+    <h3>Action</h3>
+    <ul class="birthdates">
+    <% for(let i=0; i<shows.length; i++) {%>
+      <% if (user.local.favorites.indexOf(shows[i]._id) === -1 && shows[i].genre === 'action') { %>
+      <li class="shows">
+        <span class="hidden"><%= shows[i].genre %></span>
+        <span><%= shows[i].title %></span>
+        <span class="hidden"><%= shows[i]._id %></span>
+        <!-- <span><%= shows[i].favorite %></span> -->
+        
+        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+        
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </li>
+      <%  }%>  
+    <% } %>
+    </ul>
+  </div>
+  <div>
+    <h3>Sci-Fi</h3>
+    <ul class="birthdates">
+    <% for(let i=0; i<shows.length; i++) {%>
+      <% if (user.local.favorites.indexOf(shows[i]._id) === -1 && shows[i].genre === 'scifi') { %>
+      <li class="shows">
+        <span class="hidden"><%= shows[i].genre %></span>
+        <span><%= shows[i].title %></span>
+        <span class="hidden"><%= shows[i]._id %></span>
+        <!-- <span><%= shows[i].favorite %></span> -->
+        
+        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+        
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </li>
+      <%  }%>  
+    <% } %>
+    </ul>
+  </div>
+  <div>
+    <h3>Drama</h3>
+    <ul class="birthdates">
+    <% for(let i=0; i<shows.length; i++) {%>
+      <% if (user.local.favorites.indexOf(shows[i]._id) === -1 && shows[i].genre === 'drama') { %>
+      <li class="shows">
+        <span class="hidden"><%= shows[i].genre %></span>
+        <span><%= shows[i].title %></span>
+        <span class="hidden"><%= shows[i]._id %></span>
+        <!-- <span><%= shows[i].favorite %></span> -->
+        
+        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+        
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </li>
+      <%  }%>  
+    <% } %>
+    </ul>
+  </div>
+  <div>
+    <h3>Comedy</h3>
+    <ul class="birthdates">
+    <% for(let i=0; i<shows.length; i++) {%>
+      <% if (user.local.favorites.indexOf(shows[i]._id) === -1 && shows[i].genre === 'comedy') { %>
+      <li class="shows">
+        <span class="hidden"><%= shows[i].genre %></span>
+        <span><%= shows[i].title %></span>
+        <span class="hidden"><%= shows[i]._id %></span>
+        <!-- <span><%= shows[i].favorite %></span> -->
+        
+        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+        
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </li>
+      <%  }%>  
+    <% } %>
+    </ul>
+  </div>
+  <div>
+    <h3>Thriller</h3>
+    <ul class="birthdates">
+    <% for(let i=0; i<shows.length; i++) {%>
+      <% if (user.local.favorites.indexOf(shows[i]._id) === -1 && shows[i].genre === 'thriller') { %>
+      <li class="shows">
+        <span class="hidden"><%= shows[i].genre %></span>
+        <span><%= shows[i].title %></span>
+        <span class="hidden"><%= shows[i]._id %></span>
+        <!-- <span><%= shows[i].favorite %></span> -->
+        
+        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+        
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </li>
+      <%  }%>  
+    <% } %>
+    </ul>
+  </div>
+  <div>
+    <h3>Romance</h3>
+    <ul class="birthdates">
+    <% for(let i=0; i<shows.length; i++) {%>
+      <% if (user.local.favorites.indexOf(shows[i]._id) === -1 && shows[i].genre === 'romance') { %>
+      <li class="shows">
+        <span class="hidden"><%= shows[i].genre %></span>
+        <span><%= shows[i].title %></span>
+        <span class="hidden"><%= shows[i]._id %></span>
+        <!-- <span><%= shows[i].favorite %></span> -->
+        
+        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+        
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </li>
+      <%  }%>  
+    <% } %>
+    </ul>
+  </div>
+</div>
+<script src="main.js"></script>
+
+</body>
+</html>
