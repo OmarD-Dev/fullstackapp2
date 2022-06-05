@@ -5,6 +5,7 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Oswald',Arial,  sans-serif;
+  font-size: 62.5%;
 }
 img{
   height: 200px;
@@ -26,6 +27,7 @@ img{
 li{
   list-style: none;
 }
+
 h1, h2, h3{
   font-family: 'Oswald',Arial,  sans-serif;
 }
@@ -34,4 +36,9 @@ link{
 }
 link:hover{
   color: yellow;
+}
+.split{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
